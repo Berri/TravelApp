@@ -2,7 +2,7 @@
 
 Sebuah aplikasi mobile menggunakan flutter
 
-## Getting Started
+## Persiapan untuk memulai project
 
 Sebelum menggunakan project ini download dahulu SDK flutter dan Dart
 
