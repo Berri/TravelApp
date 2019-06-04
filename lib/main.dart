@@ -15,6 +15,13 @@ class MyApp extends StatelessWidget {
   }
 }
 
+String baliImage = "assets/images/Bali.jpg";
+String bandungImage = "assets/images/Bandung.jpg";
+String jakartaImage = "assets/images/Jakarta.jpg";
+String jogjaImage = "assets/images/Jogja.jpg";
+
+var gambar = [baliImage, bandungImage, jakartaImage, jogjaImage];
+
 var gradient1 = [Color(0xFFdc5f89), Color(0xFFeea694)];
 var gradient2 = [Color(0xFF269b70), Color(0xFF7ce6a9)];
 var gradient3 = [Color(0xFF526fe2), Color(0xFF8351e5)];
@@ -64,10 +71,10 @@ class MyHomePage extends StatelessWidget {
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: <Widget>[
+                      GradientButton("Bali", gradient1),
+                      GradientButton("Bandung", gradient2),
+                      GradientButton("Jakarta", gradient3),
                       GradientButton("Jogja", gradient1),
-                      GradientButton("Jakarta", gradient2),
-                      GradientButton("Pontianak", gradient3),
-                      GradientButton("Bandung", gradient1),
                     ],
                   ),
                 ),
@@ -80,21 +87,24 @@ class MyHomePage extends StatelessWidget {
                       fontWeight: FontWeight.w600),
                 ),
                 CarouselSlider(
-                  height: 400.0,
-                  items: [1, 2, 3, 4, 5].map((i) {
+                  height: 200.0,
+                  items: gambar.map((i) {
                     return Builder(
                       builder: (BuildContext context) {
                         return Container(
-                            width: MediaQuery.of(context).size.width,
-                            margin: EdgeInsets.symmetric(horizontal: 5.0),
-                            decoration: BoxDecoration(color: Colors.amber),
-                            child: Text(
-                              'text $i',
-                              style: TextStyle(fontSize: 16.0),
-                            ));
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.symmetric(horizontal: 5.0),
+                          decoration: BoxDecoration(color: Colors.amber),
+                          child: Image.asset(i, fit: BoxFit.cover),
+                         // child: Text(
+                         //   'text $i',
+                         //   style: TextStyle(fontSize: 16.0),
+                         // ),
+                        );
                       },
                     );
                   }).toList(),
+                  autoPlay: false,
                 ),
               ],
             ),
