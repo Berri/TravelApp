@@ -30,10 +30,8 @@ class MyHomePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(
-                  "Travel",
-                  style: TextStyle(color: Colors.white, fontSize: 24.0),
-                ),
+                Text("Travel",
+                    style: TextStyle(color: Colors.white, fontSize: 24.0)),
                 SizedBox(height: 8.0),
                 Container(
                   color: Color(0xFF272c3d),
@@ -50,6 +48,9 @@ class MyHomePage extends StatelessWidget {
                               hintText: "Cari Tempat Wisata",
                               hintStyle: TextStyle(color: Colors.white54),
                               border: InputBorder.none),
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                         ),
                       )
                     ],
@@ -57,22 +58,14 @@ class MyHomePage extends StatelessWidget {
                 ),
                 SizedBox(height: 16.0),
                 Container(
-                  height: 60.0,
+                  height: 32.0,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: <Widget>[
-                      Container(
-                        child: Container(
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  colors: gradient1,
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomLeft)),
-                          child: Center(
-                            child: Text("Jakarta"),
-                          ),
-                        ),
-                      )
+                      GradientButton("Jakarta", gradient1),
+                      GradientButton("Pontianak", gradient2),
+                      GradientButton("Jogjakarta", gradient3),
+                      GradientButton("Bandung", gradient1),
                     ],
                   ),
                 )
@@ -80,6 +73,34 @@ class MyHomePage extends StatelessWidget {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class GradientButton extends StatelessWidget {
+  final nama;
+  final warna;
+  GradientButton(this.nama, this.warna);
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 10.0),
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(4.0),
+            gradient: LinearGradient(
+                colors: warna,
+                begin: Alignment.topLeft,
+                end: Alignment.bottomLeft)),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32.0),
+            child: Text(nama,
+                style: TextStyle(
+                    color: Colors.white, fontWeight: FontWeight.bold)),
+          ),
+        ),
       ),
     );
   }
